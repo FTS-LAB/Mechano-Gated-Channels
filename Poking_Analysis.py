@@ -1,4 +1,3 @@
-from pickle import GLOBAL
 import pyqtgraph as pg
 import numpy as np
 import os, sys, csv
@@ -13,11 +12,6 @@ from scipy.optimize import curve_fit
 from PyQt5.QtWidgets import QWidget, QGridLayout, QSplitter, QFormLayout, QLabel,QLineEdit, QPushButton, QTreeWidget, QFileDialog, QMessageBox, QTabWidget, QSpinBox ,QComboBox
 from PyQt5.QtGui import QPixmap
 
-#color_traces=(174, 175, 176)
-#color_fit=(196, 112, 2)
-#line_pen=pg.mkPen('#3AB0FF', width=6)
-#symbol_pen=pg.mkPen('#FFB562', width=2)
-#symbol_color=('F87474')
 
 stim_dictionary={1:0.48,
                 2:0.96,
@@ -131,22 +125,7 @@ FS_last_line_thickness_sb=QSpinBox()
 FS_last_line_thickness_sb.setValue(4)
 FS_apply_but=QPushButton('Apply Changes')
 
-'''
-#######Color Dialog#####
 
-#Color_Win=QColorDialog
-#Color=QColorDialog.getColor()
-
-color_list=[]
-
-if FS_color_but.clicked(True):
-    #Color_Win=QColorDialog
-    Color_p=QColorDialog.getColor()
-    Color=str(Color_p)
-     
-    
-FS_color_but.clicked.connect(Color_p)
-'''
 #############
 
 ####Rows####
@@ -300,21 +279,11 @@ TAV_sw_layout.addRow(TAV_border_thickness_lab,TAV_border_thickness_sb)
 TAV_sw_layout.addRow(TAV_apply_but)
 
 
-#dsw_hsplit = QSplitter(pg.QtCore.Qt.Horizontal)
-#dsw_layout.addWidget(dsw_hsplit)
-'''
-dsw_left=QWidget()
-dsw_left_l=QFormLayout()
-dsw_left.setLayout(dsw_left_l)
-dsw_hsplit.addWidget(dsw_left)
-'''
-
 #Fild for entering the fibre identifier
 #Create labels and line edit for inputs
 
 
 divisor=divider()
-
 
 
 
@@ -360,12 +329,6 @@ tab2_left_l.addRow(tab2_left_CPO_line_t3_label, tab2_left_CPO_line_t3)
 tab2_left_l.addRow(tab2_left_CPO_line2_t4_label, tab2_left_CPO_line2_t4)
 tab2_left_l.addRow(tab2_left_CPO_fitline_t_label, tab2_left_CPO_fitline_t)
 
-'''
-tab2_left_l.addRow(size_symbol_label,size_symbol)
-tab2_left_l.addRow(symbol_fill_color_label,symbol_fill_color)
-tab2_left_l.addRow(plot_line_color_label,plot_line_color)
-tab2_left_l.addRow(divider())
-'''
 
 
 
@@ -385,13 +348,6 @@ plot_line_color_label=QLabel("Select line color")
 plot_line_color=QLineEdit('#3AB0FF')
 
 #Arrange in Rows within the FormLayout
-#Arrange in Rows within the FormLayout
-'''tab2_left_l.addRow(symbol_election_label)
-tab2_left_l.addRow(divisor)
-tab2_left_l.addRow(size_symbol_label,size_symbol)
-tab2_left_l.addRow(symbol_fill_color_label,symbol_fill_color)
-tab2_left_l.addRow(plot_line_color_label,plot_line_color)
-tab2_left_l.addRow(divider())'''
 
 #Import Button
 apply_but=QPushButton('Apply changes')
@@ -920,7 +876,7 @@ tab3_vsplit3.addWidget(tab3_e)
 tab3_vsplit3.addWidget(tab3_f)
 tab3_hsplit2.addWidget(tab3_vsplit3)
 #
-tab3_layout.addWidget(tab3_hsplit2) # Solo hay que poner este porque ahora es el principal sobre el que se anidan los demás
+tab3_layout.addWidget(tab3_hsplit2) #Add tab3_hsplit2 only to the main layout, because every other splitters were added to tab3_hsplit2 previously
 #################################################################
 
 #DATA IMPORT
@@ -985,7 +941,6 @@ def import_sweeps():
         DATA_WIDGET_ALIGNED_SUBSTRACTED= stim_aling(STIM_WIDGET,DATA_WIDGET)
         THRESHOLD_D=threshold(SYNC_STIM,DATA_WIDGET_ALIGNED_SUBSTRACTED)
         TAU_VALUES=tau_calc(DATA_WIDGET_ALIGNED_SUBSTRACTED,SYNC_STIM)
-        #TAU_DATA_WIDGET=tau_calc(DATA_WIDGET_ALIGNED_SUBSTRACTED,SYNC_STIM)
 #Import Button's logic
 tab1_import_but.clicked.connect(import_sweeps)
 
@@ -1018,7 +973,6 @@ def baseline_sub(dictio):
         dict2[key]=temp
     return dict2
     
-    #Data=Data-b ##this was active and we have commented because in principle this does not add anithing. To delete in futher iterations.
 def stim_aling(dictio1, dictio2):
     ''' This function takes two dictionaris:
         the first  keys beiing indentation amount and the values are curremt 
