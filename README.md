@@ -7,6 +7,8 @@ TABLE OF CONTENTS
    1. FJFJ
    ![Screen_Shot](Resources/img/Program_Screen_Shot.jpg)
 2. MAIN PYTHON 3 PACKAGES
+   
+   *The following packages have to be compulsorily installed in your PAHT, for the correct software functioning.* 
    1. Numpy
    2. Pandas
    3. Scipy
@@ -22,10 +24,10 @@ TABLE OF CONTENTS
       4. Export Choice Select: **Traces** Check-Box only.
       5. Export Choice Select: **NO analysis**.
       6. Trace Time: **Relative to Swepp**.
-      7. Text Options: Separator (**Comma**)
-      8. Tree Widget:  Select the Sweep to export
-      9. Press **Data** Button
-      10. Export as **Full Sweep**
+      7. Text Options: Separator (**Comma**).
+      8. Tree Widget:  Select the Sweep to export.
+      9. Press **Data** Button.
+      10. Export as **Full Sweep.**
    
    ![HEKAEXP](Resources/img/HEKA_EXP.jpg)
 4. DATA PREPARATION
@@ -47,6 +49,20 @@ TABLE OF CONTENTS
 
 5. CHANNEL PARAMETERS
    1. CURRENT RESPONSE
+      1. We take the dictionary generated previously with all current traces ready to stimate the desired parameters.
+      2. We calculate the minimum current value of each trace, as these are the current peaks generated in response of each stimulus.
    2. THRESHOLD
+      1. We extract the index of the first stimulus peak, to trim the aligned and leak substracted traces from this point.
+      2. We calculte the mean and standard deviation from a inactive region of each current trace after the stimulus.
+      3. mean and sd are used to set a threshold (mean+10*sd), to determine when the current response starts.
+      4. If the current value is greather than our threshold, the index of this current value is saved.
+      5. The threshold in µm is caluculated multiplying the index extracted by the indentaiton velocity and dividing all by the sampling ratio.
    3. INACTIVATION KINETICS (TAU)
+      1. We find the index of the first stimulus peak to trim the current trace, as we have done previously.
+      2. We stimate the initial guessings for the parameters a and c of the exponential fit model (b was previously calculated with a current trace model).
+      3. The current trace was trimmed again from the minimal current value, since to adjust our data to an exponential fit only need to evaluate the region from the current peak until it becomes inactive again.
+      4. Exponential model was stimated and ploted along with the current trace in the zoomed zone plot.
+      5. Tau value in ms is calculated using the optimal b parameter returned by the curve fit function (Scipy). Multiplying the invers of the b value by the sampling ratio in KHz.
+      6. The tau value is only considered if it is between 1 and 50 ms, and the rSquared of the fiting model is greater than 0.6.
 6. RESULTS
+   1. All the channel parameters can be exported as independient CSV files.
