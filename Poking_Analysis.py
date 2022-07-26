@@ -1236,7 +1236,7 @@ def tau_calc(dictio1, dictio2):
             pass
             print('Tau Calculus Skipped')
     return dictio4
-
+"""
 def save_mim_results():
     '''This function takes the data dictionaries and saves them into three csv files '''
     csv_path='R_'+tab1_record_data.text()+'/'+tab1_Mutant_ID.text()+'/'
@@ -1246,12 +1246,38 @@ def save_mim_results():
     ta=pd.DataFrame(TAU_VALUES,columns=TAU_VALUES.keys(), index=[0])
     th=pd.DataFrame(THRESHOLD_D,columns=THRESHOLD_D.keys(), index=[0])
     src=pd.DataFrame(R_MIN,columns=R_MIN.keys(), index=[0])
-    #r=pd.DataFrame(list(zip(indent,min_current)), columns=['Indentation','Current'])
     os.makedirs(csv_path, exist_ok=True)  
     ta.to_csv(csv_name_ta,sep='\t')
     th.to_csv(csv_name_th,sep='\t')
     src.to_csv(csv_name_src,sep='\t')
-tab1_save_results_but.clicked.connect(save_mim_results)
+#tab1_save_results_but.clicked.connect(save_mim_results)
+"""
+
+def save_files():
+    csv_path='C:'+'/'+'Users'+'/'+ str(os.getlogin())+'/'+'Documents'+'/'+'Results'+'/'+tab1_record_data.text()+'/'+tab1_Mutant_ID.text()+'/'+tab1_cell_ID.text()+'/'
+    os.makedirs(csv_path,exist_ok=True)
+    ta=pd.DataFrame(TAU_VALUES,columns=TAU_VALUES.keys(), index=['TAU (ms)'])
+    th=pd.DataFrame(THRESHOLD_D,columns=THRESHOLD_D.keys(), index=['Threshold (ms)'])
+    scr=pd.DataFrame(R_MIN,columns=R_MIN.keys(), index=['Current (A)'])
+    name_ta = QFileDialog.getSaveFileName(None,caption='TAU VALUES',directory= csv_path , filter='CSV (*.csv)')
+    name_th = QFileDialog.getSaveFileName(None,caption='THRESHOLD VALUES',directory=csv_path, filter='CSV (*.csv)')
+    name_scr = QFileDialog.getSaveFileName(None,caption='STIM CURRENT RESPONSE',directory=csv_path, filter='CSV (*.csv)')
+    file_ta = open(str(name_ta[0]),'w')
+    file_th = open(str(name_th[0]),'w')
+    file_scr = open(str(name_scr[0]),'w')
+    ta.to_csv(str(name_ta[0]),sep='\t')
+    th.to_csv(str(name_th[0]),sep='\t')
+    scr.to_csv(str(name_scr[0]),sep='\t')
+    file_ta.close()
+    file_th.close()
+    file_scr.close()
+tab1_save_results_but.clicked.connect(save_files)
+
+
+
+
+
+
 
 
 def update_plottings_settings():
