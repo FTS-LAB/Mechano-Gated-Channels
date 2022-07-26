@@ -624,8 +624,7 @@ tab3_a_2=QLabel('2. Select Export Tab.')
 tab3_a_2.setFont(QtGui.QFont('Arial', 14, weight=3))
 tab3_a_3=QLabel('3. On File Type Select: Text.')
 tab3_a_3.setFont(QtGui.QFont('Arial', 14, weight=3))
-tab3_a_4=QLabel('4. Export Choice Select: Traces Check-Box only and NO analysis.')
-#tab3_a_4.setWordWrap(True)
+tab3_a_4=QLabel('4. Export Choice Select: Traces Check-Box only')
 tab3_a_4.setFont(QtGui.QFont('Arial', 14, weight=3))
 tab3_a_5=QLabel('5. Export Choice Select: NO analysis.')
 tab3_a_5.setFont(QtGui.QFont('Arial', 14, weight=3))
@@ -665,7 +664,7 @@ tab3_b.setLayout(tab3_b_l)
 
 ### Lables
 tab3_b_img_1=QLabel()
-tab3_b_img_1.setPixmap(QPixmap(r'C:\Users\Sergio\Documents\PATCH\SCRIPTS\PROGRAMAS\Poking_Analysis_GUI\Resources\img\12.jpg'))
+tab3_b_img_1.setPixmap(QPixmap(r'C:\Users\Sergio\Documents\PATCH\SCRIPTS\PROGRAMAS\Poking_Analysis_GUI\Resources\img\HEKA_EXP.jpg'))
 tab3_b_img_1.resize(5000,2000)
 
 ### Rows
