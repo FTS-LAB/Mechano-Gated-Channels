@@ -910,7 +910,8 @@ def import_sweeps():
     STIM_WIDGET.clear()
     DATA_WIDGET_ALIGNED_SUBSTRACTED.clear()
     file_filter = 'Data File (*.asc)'
-    files = QFileDialog.getOpenFileNames(None,caption='Select Your records',directory=os.getcwd(),filter=file_filter)
+    traces_dir='C:'+'/'+'Users'+'/'+ str(os.getlogin())+'/'+'Documents'
+    files = QFileDialog.getOpenFileNames(None,caption='Select Your records',directory=traces_dir,filter=file_filter)
     for file in files[0]:
         t=pd.read_csv(file, sep=',',skiprows=1, header=None,low_memory=False) 
         t.replace(' ', '')

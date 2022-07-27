@@ -2,18 +2,21 @@
 
 Analysis program based on Python3 for Electrophysiological experiments of Mechano-Gated Channels.
 
-TABLE OF CONTENTS
-1. INTRODUCTION
-   1. FJFJ
+**TABLE OF CONTENTS**
+
+1. **INTRODUCTION**
+   1. A
    ![Screen_Shot](Resources/img/Program_Screen_Shot.jpg)
-2. MAIN PYTHON 3 PACKAGES
+2. **MAIN PYTHON 3 PACKAGES**
    1. Numpy
    2. Pandas
    3. Scipy
    4. Pyqtgraph
    5. PyQT5
-3. DATA FORMAT
-   1. Our program can not process the .DAT files from HEKA software, so the recordings have to be exported to .ASC file format as shown bellow.
+
+3. **DATA FORMAT**
+   
+   *Our program can not process the .DAT files from HEKA software, so the recordings have to be exported to .ASC file format as shown bellow.*
    #
    *(Steps (1-7) need to be followed only once.)*
       1. Press Tweak Button
@@ -28,8 +31,9 @@ TABLE OF CONTENTS
       10. Export as **Full Sweep**
    
    ![HEKAEXP](Resources/img/HEKA_EXP.jpg)
-4. DATA PREPARATION
-   1. Every trace have to be aligned to its sitmuli, leak substracted and linked to its respective indentation value, before any analysis.
+4. **DATA PREPARATION**
+
+   *Every trace have to be aligned to its sitmuli, leak substracted and linked to its respective indentation value, before any analysis*.
    #
       1. ALIGMENT
          1. We extract the index of the first stimulus peak for each trace. (Both traces share their indexes.)
@@ -45,8 +49,8 @@ TABLE OF CONTENTS
          3. We use as in index the number of peaks calculated above to extrac each respective indentation value from the dictionay.
          4. We generate a dictionary with all current traces sorted by their indentation values.
 
-5. CHANNEL PARAMETERS
+5. **CHANNEL PARAMETERS**
    1. CURRENT RESPONSE
    2. THRESHOLD
    3. INACTIVATION KINETICS (TAU)
-6. RESULTS
+6. **RESULTS**
