@@ -68,3 +68,4 @@ Analysis program based on Python3 for Electrophysiological experiments of Mechan
       5. Tau value in ms is calculated using the optimal b parameter returned by the curve fit function (Scipy). Multiplying the invers of the b value by the sampling ratio in KHz.
       6. The tau value is only considered if it is between 1 and 50 ms, and the rSquared of the fiting model is greater than 0.6.
 6. **RESULTS**
+   1. All the channel parameters estimated can be exported as separate CSV files.
